@@ -1,0 +1,120 @@
+dataset:
+  train:
+    name: Hastings-traindataset
+    phase: train
+    max_size: 640
+    crop_size: 512
+    transforms:
+      use_hflip: 0.5
+      use_vflip: 0.5
+      use_rot: 0.5
+      random_crop:
+        height: 96
+        width: 96
+      center_crop: ~
+      resieze_16: ~
+    type: DiffusionFusionDataset
+
+    dataset_enlarge_ratio: 1
+
+    num_workers_per_gpu: 0
+    batch_size_per_gpu: 2 #修改其默认的图像块的大小就行了；
+    prefetch_mode: ~ # 其实这里默认就是CPU进行的预取的操作了；
+
+
+    # ============== TRAIN DATASET PATHS ==============
+
+    # IR (Infrared Image) Low Contrast Paths - Train
+    ir_low_contrast_slight_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_slight/train"
+    ir_low_contrast_moderate_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_moderate/train"
+    ir_low_contrast_average_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_average/train"
+    ir_low_contrast_extreme_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_extreme/train"
+
+    # IR Noise Paths - Train
+    ir_noise_slight_path: "DDL-12/IR_Noise/IR_Noise_slight/train"
+    ir_noise_moderate_path: "DDL-12/IR_Noise/IR_Noise_moderate/train"
+    ir_noise_average_path: "DDL-12/IR_Noise/IR_Noise_average/train"
+    ir_noise_extreme_path: "DDL-12/IR_Noise/IR_Noise_extreme/train"
+    # IR Stripe Noise Paths - Train
+    ir_stripe_noise_slight_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_slight/train"
+    ir_stripe_noise_moderate_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_moderate/train"
+    ir_stripe_noise_average_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_average/train"
+    ir_stripe_noise_extreme_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_extreme/train"
+
+    # Doubel 退化的内容；
+    # VI low light and IR Stripe Noise Paths - Train
+    llsn_path: "DDL-12/llsn/train"
+    # VI over exposure and IR low contrast Paths - Train
+    oelc_path: "DDL-12/oelc/train"
+    # VI rain haze and IR random noise Paths - Train
+    rhrn_path: "DDL-12/rhrn/train"
+
+#    vi_blur_slight_path: "DDL-12/VI_Blur/VI_Blur_slight/train"
+#
+#    vi_haze_slight_path: "DDL-12/VI_Haze/VI_Haze_slight/train"
+#
+#    vi_haze_low_path: "DDL-12/VI_Haze_Low/train"
+#
+#    vi_low_light_slight_path: "DDL-12/VI_Low_light/VI_Low_light_slight/train"
+
+
+  val: # 其实其中的test 内容和其val的部分的操作是可以肯定的形式的；
+    name: Hastings-valdataset
+    phase: val
+    max_size: 640
+    crop_size: 512
+    transforms:
+      use_hflip: ~
+      use_vflip: ~
+      use_rot: ~
+      random_crop: ~
+      center_crop: ~
+      resieze_16: True # 对图像进行16的倍数的调整；
+    type: ControlFusionDataset
+
+    dataset_enlarge_ratio: 1
+    num_workers_per_gpu: 1
+    batch_size_per_gpu: 1
+    prefetch_mode: ~
+
+
+
+    # ============== TEST DATASET PATHS ==============
+
+    # single 退化：
+
+    # IR (Infrared Image) Low Contrast Paths - Test
+    ir_low_contrast_slight_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_slight/val"
+    ir_low_contrast_moderate_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_moderate/val"
+    ir_low_contrast_average_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_average/val"
+    ir_low_contrast_extreme_path: "DDL-12/IR_Low_contrast/IR_Low_contrast_extreme/val"
+
+    # IR Noise Paths - Test
+    ir_noise_slight_path: "DDL-12/IR_Noise/IR_Noise_slight/val"
+    ir_noise_moderate_path: "DDL-12/IR_Noise/IR_Noise_moderate/val"
+    ir_noise_average_path: "DDL-12/IR_Noise/IR_Noise_average/val"
+    ir_noise_extreme_path: "DDL-12/IR_Noise/IR_Noise_extreme/val"
+
+    # IR Stripe Noise Paths - Test
+    ir_stripe_noise_slight_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_slight/val"
+    ir_stripe_noise_moderate_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_moderate/val"
+    ir_stripe_noise_average_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_average/val"
+    ir_stripe_noise_extreme_path: "DDL-12/IR_Stripe_noise/IR_Stripe_noise_extreme/val"
+
+    # Doubel 退化的内容；
+    # VI low light and IR Stripe Noise Paths - Train
+    llsn_path: "DDL-12/llsn/val"
+    # VI over exposure and IR low contrast Paths - Train
+    oelc_path: "DDL-12/oelc/val"
+    # VI rain haze and IR random noise Paths - Train
+    rhrn_path: "DDL-12/rhrn/val"
+
+#    vi_blur_slight_path: "DDL-12/VI_Blur/VI_Blur_slight/val"
+#
+#    vi_haze_slight_path: "DDL-12/VI_Haze/VI_Haze_slight/val"
+#
+#    vi_haze_low_path: "DDL-12/VI_Haze_Low/val"
+#
+#    vi_low_light_slight_path: "DDL-12/VI_Low_light/VI_Low_light_slight/val"
+
+

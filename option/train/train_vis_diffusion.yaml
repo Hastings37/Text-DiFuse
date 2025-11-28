@@ -1,0 +1,156 @@
+dataset:
+  train:
+    name: Hastings-traindataset
+    phase: train
+    max_size: 640
+    crop_size: 512
+    transforms:
+      use_hflip: 0.5
+      use_vflip: 0.5
+      use_rot: 0.5
+      random_crop:
+        height: 96
+        width: 96
+      center_crop: ~
+      resieze_16: ~
+    type: DiffusionFusionDataset
+
+    dataset_enlarge_ratio: 1
+
+    num_workers_per_gpu: 1
+    batch_size_per_gpu: 2 #修改其默认的图像块的大小就行了；
+    prefetch_mode: ~ # 其实这里默认就是CPU进行的预取的操作了；
+
+
+    # ============== TRAIN DATASET PATHS ==============
+    # VI Blur Paths - Train
+    vi_blur_slight_path: "DDL-12/VI_Blur/VI_Blur_slight/train"
+#    vi_blur_moderate_path: "DDL-12/VI_Blur/VI_Blur_moderate/train"
+#    vi_blur_average_path: "DDL-12/VI_Blur/VI_Blur_average/train"
+#    vi_blur_extreme_path: "DDL-12/VI_Blur/VI_Blur_extreme/train"
+#
+#    # VI Haze Paths - Train
+#    vi_haze_slight_path: "DDL-12/VI_Haze/VI_Haze_slight/train"
+#    vi_haze_moderate_path: "DDL-12/VI_Haze/VI_Haze_moderate/train"
+#    vi_haze_average_path: "DDL-12/VI_Haze/VI_Haze_average/train"
+#    vi_haze_extreme_path: "DDL-12/VI_Haze/VI_Haze_extreme/train"
+#
+#    # VI Haze and low Paths - Train
+#    vi_haze_low_path: "DDL-12/VI_Haze_Low/train"
+#
+#    # VI Low Light Paths - Train
+#    vi_low_light_slight_path: "DDL-12/VI_Low_light/VI_Low_light_slight/train"
+#    vi_low_light_moderate_path: "DDL-12/VI_Low_light/VI_Low_light_moderate/train"
+#    vi_low_light_average_path: "DDL-12/VI_Low_light/VI_Low_light_average/train"
+#    vi_low_light_extreme_path: "DDL-12/VI_Low_light/VI_Low_light_extreme/train"
+#
+#
+#    # VI (Visible Image) Noise Paths - Train
+#    vi_noise_slight_path: "DDL-12/VI_Noise/VI_Noise_slight/train"
+#    vi_noise_moderate_path: "DDL-12/VI_Noise/VI_Noise_moderate/train"
+#    vi_noise_average_path: "DDL-12/VI_Noise/VI_Noise_average/train"
+#    vi_noise_extreme_path: "DDL-12/VI_Noise/VI_Noise_extreme/train"
+#
+#    # VI Noise Low Paths - Train
+#    vi_noise_low_path: "DDL-12/VI_Noise_Low/train"
+#
+#    # VI Over Exposure Paths - Train
+#    vi_over_exposure_slight_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_slight/train"
+#    vi_over_exposure_moderate_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_moderate/train"
+#    vi_over_exposure_average_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_average/train"
+#    vi_over_exposure_extreme_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_extreme/train"
+#
+#    # VI Rain Paths - Train
+#    vi_rain_slight_path: "DDL-12/VI_Rain/VI_Rain_slight/train"
+#    vi_rain_moderate_path: "DDL-12/VI_Rain/VI_Rain_moderate/train"
+#    vi_rain_average_path: "DDL-12/VI_Rain/VI_Rain_average/train"
+#    vi_rain_extreme_path: "DDL-12/VI_Rain/VI_Rain_extreme/train"
+#
+#    # VI Rain Haze Paths - Train
+#    vi_rain_haze_path: "DDL-12/VI_Rain_Haze/train"
+#
+#    # Doubel 退化的内容；
+#    # VI low light and IR Stripe Noise Paths - Train
+#    llsn_path: "DDL-12/llsn/train"
+#    # VI over exposure and IR low contrast Paths - Train
+#    oelc_path: "DDL-12/oelc/train"
+#    # VI rain haze and IR random noise Paths - Train
+#    rhrn_path: "DDL-12/rhrn/train"
+
+
+
+  val: # 其实其中的test 内容和其val的部分的操作是可以肯定的形式的；
+    name: Hastings-valdataset
+    phase: val
+    max_size: 640
+    crop_size: 512
+    transforms:
+      use_hflip: ~
+      use_vflip: ~
+      use_rot: ~
+      random_crop: ~
+      center_crop: ~
+      resieze_16: True # 对图像进行16的倍数的调整；
+    type: ControlFusionDataset
+
+    dataset_enlarge_ratio: 1
+    num_workers_per_gpu: 1
+    batch_size_per_gpu: 1
+    prefetch_mode: ~
+
+
+    # ============== TEST DATASET PATHS ==============
+    # VI Blur Paths - Test
+    vi_blur_slight_path: "DDL-12/VI_Blur/VI_Blur_slight/val"
+#    vi_blur_moderate_path: "DDL-12/VI_Blur/VI_Blur_moderate/val"
+#    vi_blur_average_path: "DDL-12/VI_Blur/VI_Blur_average/val"
+#    vi_blur_extreme_path: "DDL-12/VI_Blur/VI_Blur_extreme/val"
+#
+#    # VI Haze Paths - Test
+#    vi_haze_slight_path: "DDL-12/VI_Haze/VI_Haze_slight/val"
+#    vi_haze_moderate_path: "DDL-12/VI_Haze/VI_Haze_moderate/val"
+#    vi_haze_average_path: "DDL-12/VI_Haze/VI_Haze_average/val"
+#    vi_haze_extreme_path: "DDL-12/VI_Haze/VI_Haze_extreme/val"
+#
+#    # VI Haze Low Paths - Test
+#    vi_haze_low_path: "DDL-12/VI_Haze_Low/val"
+#
+#    # VI Low Light Paths - Test
+#    vi_low_light_slight_path: "DDL-12/VI_Low_light/VI_Low_light_slight/val"
+#    vi_low_light_moderate_path: "DDL-12/VI_Low_light/VI_Low_light_moderate/val"
+#    vi_low_light_average_path: "DDL-12/VI_Low_light/VI_Low_light_average/val"
+#    vi_low_light_extreme_path: "DDL-12/VI_Low_light/VI_Low_light_extreme/val"
+#
+#    # VI (Visible Image) Noise Paths - Test
+#    vi_noise_slight_path: "DDL-12/VI_Noise/VI_Noise_slight/val"
+#    vi_noise_moderate_path: "DDL-12/VI_Noise/VI_Noise_moderate/val"
+#    vi_noise_average_path: "DDL-12/VI_Noise/VI_Noise_average/val"
+#    vi_noise_extreme_path: "DDL-12/VI_Noise/VI_Noise_extreme/val"
+#
+#    # VI Noise Low Paths - Test
+#    vi_noise_low_path: "DDL-12/VI_Noise_Low/val"
+#
+#    # VI Over Exposure Paths - Test
+#    vi_over_exposure_slight_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_slight/val"
+#    vi_over_exposure_moderate_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_moderate/val"
+#    vi_over_exposure_average_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_average/val"
+#    vi_over_exposure_extreme_path: "DDL-12/VI_Over_exposure/VI_Over_exposure_extreme/val"
+#
+#    # VI Rain Paths - Test
+#    vi_rain_slight_path: "DDL-12/VI_Rain/VI_Rain_slight/val"
+#    vi_rain_moderate_path: "DDL-12/VI_Rain/VI_Rain_moderate/val"
+#    vi_rain_average_path: "DDL-12/VI_Rain/VI_Rain_average/val"
+#    vi_rain_extreme_path: "DDL-12/VI_Rain/VI_Rain_extreme/val"
+#
+#    # VI Rain Haze Paths - Test
+#    vi_rain_haze_path: "DDL-12/VI_Rain_Haze/val"
+#
+#    # Doubel 退化的内容；
+#    # VI low light and IR Stripe Noise Paths - Train
+#    llsn_path: "DDL-12/llsn/val"
+#    # VI over exposure and IR low contrast Paths - Train
+#    oelc_path: "DDL-12/oelc/val"
+#    # VI rain haze and IR random noise Paths - Train
+#    rhrn_path: "DDL-12/rhrn/val"
+
+
